@@ -4,6 +4,11 @@ import java.awt.*;
 public class Display {
 
     private JFrame frame;
+
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
     private Canvas canvas;
 
     private String title;

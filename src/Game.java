@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+
 public class Game implements Runnable {
 
     private Display display;
@@ -9,13 +12,15 @@ public class Game implements Runnable {
 
     private Thread thread;
 
+    private BufferStrategy bs;
+    private Graphics g;
+
     public Game(String title, int width, int height) {
 
         this.width = width;
         this.height = height;
         this.title = title;
 
-        display = new Display(title, width, height);
 
 
     }
@@ -31,7 +36,20 @@ public class Game implements Runnable {
     }
 
     private void render() {
+        //Buffer Strategy is a way to draw to the screen -> Using buffers, hidden screen in advance stops flashing/flickering
+        bs = display.getCanvas().getBufferStrategy();
+        //If canvas doesn't currently have a buffer
+        if(bs == null){
+            display.getCanvas().createBufferStrategy(3); //Number of buffers
+            return;
+        }
 
+        g = bs.getDrawGraphics();
+        //Drawing to the screen here
+        g.fillRect(0, 0, width, height);
+        //Finished drawing
+        bs.show();
+        g.dispose();
     }
 
     @Override
@@ -62,7 +80,7 @@ public class Game implements Runnable {
             return;
 
         } else {
-
+            isRunning = true;
             thread = new Thread(this);
             thread.start();
 
