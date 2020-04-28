@@ -52,9 +52,9 @@ public class Game implements Runnable {
 
         display = new Display(title, width, height);
         Assets.init();
-        gameState = new GameState();
-        menuState = new MenuState();
-        settingState = new SettingsState();
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        settingState = new SettingsState(this);
 
         State.setState(gameState);
 

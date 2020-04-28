@@ -1,23 +1,29 @@
 package States;
 
+import Entities.Creatures.Player;
 import graphics.Assets;
+import tilegame.Game;
 
 import java.awt.*;
 
-public class GameState extends State{
+public class GameState extends State {
 
-public GameState(){
 
-}
+    private Player player;
+
+    public GameState(Game game) {
+        super(game);
+        player = new Player(0, 0, 100);
+    }
 
 
     @Override
     public void update() {
-
+        player.update();
     }
 
     @Override
     public void render(Graphics g) {
-
+        player.render(g);
     }
 }

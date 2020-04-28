@@ -1,5 +1,7 @@
 package Entities.Creatures;
 
+import graphics.Assets;
+
 import java.awt.*;
 
 public class Player extends Creature {
@@ -15,7 +17,7 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
-
+        g.drawImage(Assets.player, (int)x, (int)y, null);
     }
 
 
