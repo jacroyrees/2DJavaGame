@@ -69,6 +69,7 @@ public class Game implements Runnable {
 
 
     private void update() {
+        keyManager.update();
         if(State.getState() != null){
             State.getState().update();
         }
@@ -140,6 +141,10 @@ public class Game implements Runnable {
 
         stop();
 
+    }
+
+    public KeyManager getKeyManager(){
+        return keyManager;
     }
 
     public synchronized void start() {

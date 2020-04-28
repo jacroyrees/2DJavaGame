@@ -13,7 +13,7 @@ public class GameState extends State {
 
     public GameState(Game game) {
         super(game);
-        player = new Player(0, 0, 100);
+        player = new Player(game,0, 0, 100);
     }
 
 
