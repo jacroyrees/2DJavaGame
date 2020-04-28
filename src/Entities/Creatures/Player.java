@@ -37,7 +37,7 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.playerArray[1], (int)x, (int)y, width, height,null);
+        g.drawImage(Assets.playerArray.get(1), (int)x, (int)y, width, height,null);
     }
 
 

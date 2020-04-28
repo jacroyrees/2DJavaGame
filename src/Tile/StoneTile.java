@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 public class StoneTile extends Tile {
     public StoneTile( int id) {
-        super(Assets.stoneArray[1], id);
+        super(Assets.stoneArray.get(1), id);
     }
 
     @Override

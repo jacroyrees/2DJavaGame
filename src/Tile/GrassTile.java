@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 public class GrassTile extends Tile {
 
     public GrassTile(int id) {
-        super(Assets.grassArray[1], id);
+        super(Assets.grassArray.get(1), id);
     }
 
 }
