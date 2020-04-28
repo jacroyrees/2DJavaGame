@@ -1,22 +1,28 @@
-package gfx;
+package graphics;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Assets {
 
-    public static BufferedImage stone, sand, grass, mud, sandstone;
+
+    public static BufferedImage stone, sand, grass, mud, sandStone, player;
 
 
     private static final int width = 32;
     private static final int height = 32;
 
-    public static void init(){
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
-        stone = sheet.cropSheet(0, 0, width, height);
-        sand  = sheet.cropSheet(0, width, width, height);
-        grass  = sheet.cropSheet(0, width * 2, width, height);
-        mud = sheet.cropSheet(0, 0, width * 3, height);
-        sandstone  = sheet.cropSheet(0, width * 4, width, height);
+    public static void init() {
+        SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
+        SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
+
+        stone = tileSheet.cropSheet(0, 0, width, height);
+        sand = tileSheet.cropSheet(0, width, width, height);
+        grass = tileSheet.cropSheet(0, width * 2, width, height);
+        mud = tileSheet.cropSheet(0, width * 3, width, height);
+        sandStone = tileSheet.cropSheet(0, width * 4, width, height);
+
+        player = playerSprite.cropSheet(0, 0, width, height);
 
     }
 }

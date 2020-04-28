@@ -1,8 +1,9 @@
 package tilegame;
 
 import display.Display;
-import gfx.ImageLoader;
-import gfx.SpriteSheet;
+import graphics.Assets;
+
+import graphics.SpriteSheet;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -37,15 +38,17 @@ public class Game implements Runnable {
     }
 
     private void init() {
-
+        Assets.init();
         display = new Display(title, width, height);
-        test = ImageLoader.loadImage("/res/textures/0x72_16x16DungeonTileset.v1.png");
-        sheet = new SpriteSheet(test);
+
+
 
     }
 
-    private void update() {
+    int x = 0;
 
+    private void update() {
+        x+= 1;
     }
 
     private void render() {
@@ -62,7 +65,8 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //Drawing to the screen here
 
-        g.drawImage(sheet.cropSheet(64, 0, 16, 16), 5, 5, null);
+        g.drawImage(Assets.player, x,0,null);
+
 
         //Finished drawing
         bs.show();
@@ -74,6 +78,13 @@ public class Game implements Runnable {
 
         init();
 
+        int fps = 60; //sets the frames per second
+        double updateTime = 1000000000 / fps; //amount of times we run the loop per second
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime(); //Amount of time in nanoseconds the computer is running at
+        long timer = 0;
+        int updates = 0;
         /*
         GAME LOOP!
         1. UPDATE ALL VARIABLES, POSITION OF OBJECTS ...
@@ -81,9 +92,23 @@ public class Game implements Runnable {
          */
 
         while (isRunning) {
+            now = System.nanoTime();
+            delta += (now - lastTime) / updateTime; //Amount of time passed since the code was last called, divided by amount of time allowed
+            timer += now - lastTime;
+            lastTime = now;
 
-            update();
-            render();
+            if(delta >= 1) {
+                update();
+                render();
+                updates++;
+                delta --; //back to zero for the new check
+            }
+
+            if(timer >= 1000000000){
+                System.out.println("FPS: " + updates);
+                updates = 0;
+                timer = 0;
+            }
 
         }
 
