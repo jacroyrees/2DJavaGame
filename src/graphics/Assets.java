@@ -32,11 +32,13 @@ public class Assets {
             ind = ind + 32;
 
         }
-        ind = 0;
-        for(int j = 0; j < 3; j++){
-            playerArray.add(playerSprite.cropSheet(ind, 0, width, height));
-        ind += 32;}
+      
+        for(int j = 0; j < 128; j += 32) {
+            for (int k = 0; k < 96; k += 32) {
+                playerArray.add(playerSprite.cropSheet(k, j, width, height));
 
+            }
+        }
 
 
     }
