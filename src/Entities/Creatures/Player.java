@@ -16,15 +16,22 @@ public class Player extends Creature {
 
     @Override
     public void update() {
+        getUserInput();
+        move();
+    }
 
-        if(game.getKeyManager().up ){
-            y -= 3;
+    private void getUserInput(){
+        xMove = 0;
+        yMove = 0;
+
+        if(game.getKeyManager().up){
+            yMove = -speed;
         }if(game.getKeyManager().down){
-            y += 3;
+            yMove = speed;
         }if(game.getKeyManager().left){
-            x -= 3;
+            xMove = -speed;
         }if(game.getKeyManager().right){
-            x+=3;
+            xMove = speed;
         }
     }
 

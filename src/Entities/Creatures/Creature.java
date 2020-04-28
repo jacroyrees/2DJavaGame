@@ -16,10 +16,21 @@ public abstract class Creature extends Entity {
     public static final int DEFAULT_CREATURE_WIDTH = 32,
                             DEFAULT_CREATURE_HEIGHT = 32;
 
-    public Creature(float x, float y, int width, int height, int hp){
+    protected float xMove, yMove;
+
+
+
+    public Creature(float x, float y, int width, int height, int hp){ds
         super(x, y, width, height);
         this.hp = hp;
         speed = DEFAULT_SPEED;
+        xMove =0;
+        yMove = 0;
+    }
+
+    public void move(){
+        x += xMove;
+        y += yMove;
     }
 
     public int getHp() {
@@ -38,7 +49,21 @@ public abstract class Creature extends Entity {
         this.speed = speed;
     }
 
+    public float getxMove() {
+        return xMove;
+    }
 
+    public void setxMove(float xMove) {
+        this.xMove = xMove;
+    }
+
+    public float getyMove() {
+        return yMove;
+    }
+
+    public void setyMove(float yMove) {
+        this.yMove = yMove;
+    }
 
 
 }
