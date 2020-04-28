@@ -4,6 +4,7 @@ import States.GameState;
 import States.MenuState;
 import States.SettingsState;
 import States.State;
+import UserIO.KeyManager;
 import display.Display;
 import graphics.Assets;
 
@@ -35,6 +36,8 @@ public class Game implements Runnable {
     private State menuState;
     private State settingState;
 
+    private KeyManager keyManager;
+
 
 
 
@@ -43,6 +46,7 @@ public class Game implements Runnable {
         this.width = width;
         this.height = height;
         this.title = title;
+        keyManager = new KeyManager();
 
 
 
@@ -51,6 +55,7 @@ public class Game implements Runnable {
     private void init() {
 
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
         gameState = new GameState(this);
         menuState = new MenuState(this);
