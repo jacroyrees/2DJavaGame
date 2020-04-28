@@ -8,8 +8,8 @@ import java.awt.*;
 public class Player extends Creature {
 
     private Game game;
-    public Player(Game game, float x, float y, int hp) {
-        super(x, y, hp);
+    public Player(Game game, float x, float y, int width, int height, int hp) {
+        super(x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, hp);
         this.game = game;
     }
 
@@ -30,7 +30,7 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int)x, (int)y, null);
+        g.drawImage(Assets.player, (int)x, (int)y, width, height,null);
     }
 
 

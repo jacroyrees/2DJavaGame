@@ -1,5 +1,6 @@
 package States;
 
+import Entities.Creatures.Creature;
 import Entities.Creatures.Player;
 import graphics.Assets;
 import tilegame.Game;
@@ -13,7 +14,7 @@ public class GameState extends State {
 
     public GameState(Game game) {
         super(game);
-        player = new Player(game,0, 0, 100);
+        player = new Player(game,0, 0, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10);
     }
 
 
