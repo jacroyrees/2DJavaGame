@@ -1,5 +1,7 @@
 package tilegame;
 
+import States.GameState;
+import States.State;
 import display.Display;
 import graphics.Assets;
 
@@ -27,6 +29,11 @@ public class Game implements Runnable {
     private BufferedImage test;
     private SpriteSheet sheet;
 
+    private State gameState;
+
+
+
+
     public Game(String title, int width, int height) {
 
         this.width = width;
@@ -38,17 +45,21 @@ public class Game implements Runnable {
     }
 
     private void init() {
-        Assets.init();
-        display = new Display(title, width, height);
 
+        display = new Display(title, width, height);
+        Assets.init();
+        gameState = new GameState();
+        State.setState(gameState);
 
 
     }
 
-    int x = 0;
+
 
     private void update() {
-        x+= 1;
+        if(State.getState() != null){
+            State.getState().update();
+        }
     }
 
     private void render() {
@@ -65,7 +76,10 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //Drawing to the screen here
 
-        g.drawImage(Assets.player, x,0,null);
+        if(State.getState() != null){
+            State.getState().render(g);
+
+        }
 
 
         //Finished drawing
