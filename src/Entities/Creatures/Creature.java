@@ -20,7 +20,7 @@ public abstract class Creature extends Entity {
 
 
 
-    public Creature(float x, float y, int width, int height, int hp){ds
+    public Creature(float x, float y, int width, int height, int hp){
         super(x, y, width, height);
         this.hp = hp;
         speed = DEFAULT_SPEED;
