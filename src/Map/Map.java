@@ -38,8 +38,8 @@ public class Map {
     }
 
     private void loadWorld(String fileUrl) {
-        width = 5;
-        height = 5;
+        width = 32;
+        height = 32;
         tiles = new int[width][height];
 
         for (int x = 0; x < width; x++) {
