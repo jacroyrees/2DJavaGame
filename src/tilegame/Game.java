@@ -1,6 +1,8 @@
 package tilegame;
 
 import States.GameState;
+import States.MenuState;
+import States.SettingsState;
 import States.State;
 import display.Display;
 import graphics.Assets;
@@ -30,6 +32,8 @@ public class Game implements Runnable {
     private SpriteSheet sheet;
 
     private State gameState;
+    private State menuState;
+    private State settingState;
 
 
 
@@ -49,6 +53,9 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         Assets.init();
         gameState = new GameState();
+        menuState = new MenuState();
+        settingState = new SettingsState();
+
         State.setState(gameState);
 
 
