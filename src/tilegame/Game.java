@@ -1,5 +1,12 @@
+package tilegame;
+
+import display.Display;
+import gfx.ImageLoader;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+
 
 public class Game implements Runnable {
 
@@ -15,6 +22,8 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
+    private BufferedImage test;
+
     public Game(String title, int width, int height) {
 
         this.width = width;
@@ -28,6 +37,8 @@ public class Game implements Runnable {
     private void init() {
 
         display = new Display(title, width, height);
+        test = ImageLoader.loadImage("/res/textures/0x72_16x16DungeonTileset.v1.png");
+
 
     }
 
@@ -45,8 +56,12 @@ public class Game implements Runnable {
         }
 
         g = bs.getDrawGraphics();
+        //Clear screen
+        g.clearRect(0, 0, width, height);
         //Drawing to the screen here
-        g.fillRect(0, 0, width, height);
+
+        //g.drawImage(test, 0, 0, null);
+
         //Finished drawing
         bs.show();
         g.dispose();
