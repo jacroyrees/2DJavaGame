@@ -7,6 +7,13 @@ public class Tile {
 
     public static Tile[] tiles = new Tile[256];
 
+    public static Tile stoneTile = new GrassTile(0);
+    public static Tile sandTile = new SandTile(1);
+    public static Tile grassTile = new GrassTile(2);
+    public static Tile mudTile = new MudTile(3);
+    public static Tile sandStoneTile = new SandStoneTile(4);
+
+
 
 
 
@@ -22,6 +29,7 @@ public class Tile {
     public Tile(BufferedImage image, int id){
         this.image = image;
         this.id = id;
+        tiles[id] = this;
     }
 
 
