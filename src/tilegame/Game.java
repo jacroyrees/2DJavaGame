@@ -2,6 +2,7 @@ package tilegame;
 
 import display.Display;
 import gfx.ImageLoader;
+import gfx.SpriteSheet;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -23,6 +24,7 @@ public class Game implements Runnable {
     private Graphics g;
 
     private BufferedImage test;
+    private SpriteSheet sheet;
 
     public Game(String title, int width, int height) {
 
@@ -38,7 +40,7 @@ public class Game implements Runnable {
 
         display = new Display(title, width, height);
         test = ImageLoader.loadImage("/res/textures/0x72_16x16DungeonTileset.v1.png");
-
+        sheet = new SpriteSheet(test);
 
     }
 
@@ -60,7 +62,7 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //Drawing to the screen here
 
-        //g.drawImage(test, 0, 0, null);
+        g.drawImage(sheet.cropSheet(64, 0, 16, 16), 5, 5, null);
 
         //Finished drawing
         bs.show();
