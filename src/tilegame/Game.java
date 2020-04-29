@@ -1,19 +1,23 @@
 package tilegame;
 
+import Sounds.Sounds;
 import States.GameState;
 import States.MenuState;
 import States.SettingsState;
 import States.State;
 import UserIO.KeyManager;
+import Utilities.Utilities;
 import display.Display;
 import graphics.Assets;
 
 import graphics.Camera;
 import graphics.SpriteSheet;
 
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+
 
 
 public class Game implements Runnable {
@@ -41,7 +45,7 @@ public class Game implements Runnable {
     private State settingState;
 
     private KeyManager keyManager;
-
+    private Sounds sounds;
 
 
 
@@ -51,12 +55,13 @@ public class Game implements Runnable {
         this.height = height;
         this.title = title;
         keyManager = new KeyManager();
-
+        sounds = new Sounds();
 
 
     }
 
-    private void init() {
+    private void init()  {
+
         Assets.init();
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
@@ -125,6 +130,8 @@ public class Game implements Runnable {
         2. RENDER AND DRAW THINGS TO THE SCREEN THEN RESTART
          */
 
+
+
         while (isRunning) {
             now = System.nanoTime();
             delta += (now - lastTime) / updateTime; //Amount of time passed since the code was last called, divided by amount of time allowed
@@ -139,7 +146,7 @@ public class Game implements Runnable {
             }
 
             if(timer >= 1000000000){
-                System.out.println("FPS: " + updates);
+                //System.out.println("FPS: " + updates);
                 updates = 0;
                 timer = 0;
             }

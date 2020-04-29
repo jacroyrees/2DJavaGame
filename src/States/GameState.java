@@ -3,8 +3,8 @@ package States;
 import Entities.Creatures.Creature;
 import Entities.Creatures.Player;
 import Map.Map;
-import graphics.Assets;
-import tilegame.Game;
+
+import Sounds.Sounds;
 import tilegame.Handler;
 
 import java.awt.*;
@@ -14,7 +14,7 @@ public class GameState extends State {
 
     private Player player;
     private Map map;
-
+    private Sounds sounds;
     public GameState(Handler handler) {
         super(handler);
 

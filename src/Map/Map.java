@@ -2,7 +2,6 @@ package Map;
 
 import Tile.Tile;
 import Utilities.Utilities;
-import tilegame.Game;
 import tilegame.Handler;
 
 import java.awt.*;
@@ -53,6 +52,7 @@ public class Map {
     }
 
     private void loadWorld(String fileUrl) {
+        this.fileURL = fileUrl;
         String file = Utilities.loadFileAsString(fileURL);
         String[] tokens = file.split("\\s+"); //any space or new line
         width = Utilities.parseInt(tokens[0]);
