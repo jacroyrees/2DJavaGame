@@ -46,7 +46,10 @@ public abstract class Creature extends Entity {
 
 
         }else if(xMove < 0){ //Moving left
-            x+= xMove;
+            int tx = (int) (x + xMove + bounds.x) / 32;
+            if(!collisionWithTile(tx, (int)(y + bounds.y)) && !collisionWithTile(tx, (int)(y + bounds.y) / 32)){
+                x += xMove;
+            }
         }
     }
 
