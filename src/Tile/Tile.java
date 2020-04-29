@@ -23,6 +23,11 @@ public abstract class Tile {
     public static Tile mudTile = new MudTile(3);
     public static Tile sandStoneTile = new SandStoneTile(4);
 
+    public static Tile newDirtTile = new NewDirtTile(5);
+    public static Tile newGrassLeftTile = new NewGrassLeftTile(6);
+    public static Tile newGrassRightTile = new NewGrassRightTile(7);
+    public static Tile newGrassTile = new NewGrassTile(8);
+
 
 
 
