@@ -44,7 +44,7 @@ public class Map {
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                tiles[x][y] = 0;
+                tiles[x][y] = 3;
 
             }
         }

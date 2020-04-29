@@ -23,13 +23,14 @@ public class Assets {
 
         int ind = 0;
         for(int i = 0; i < 10; i++){
+
             stoneArray.add(tileSheet.cropSheet(ind, 0, width, height));
             sandArray.add(tileSheet.cropSheet(ind, 32, width, height));
             grassArray.add(tileSheet.cropSheet(ind, 64, width, height));
             mudArray.add(tileSheet.cropSheet(ind, 96, width, height));
             sandStoneArray.add(tileSheet.cropSheet(ind, 128, width, height));
 
-            ind = ind + 32;
+            ind = ind + width;
 
         }
       
