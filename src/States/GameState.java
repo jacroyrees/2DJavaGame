@@ -17,7 +17,7 @@ public class GameState extends State {
     public GameState(Game game) {
         super(game);
         player = new Player(game,0, 0, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10);
-        map = new Map("");
+        map = new Map("src/res/Level/Level1");
     }
 
 
