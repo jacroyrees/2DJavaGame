@@ -2,18 +2,20 @@ package Map;
 
 import Tile.Tile;
 import Utilities.Utilities;
+import tilegame.Game;
 
 import java.awt.*;
 
 public class Map {
-
+        private Game game;
     private int width, height;
     private int[][] tiles;
     private int spawnX, spawnY;
     private String fileURL;
 
-    public Map(String fileUrl) {
+    public Map(Game game, String fileUrl) {
         this.fileURL = fileUrl;
+        this.game = game;
         loadWorld(fileUrl);
 
     }
@@ -25,7 +27,7 @@ public class Map {
     public void render(Graphics g) {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                getTile(x, y).render(g, x * getTile(x, y).TILE_WIDTH, y * getTile(x, y).TILE_HEIGHT);
+                getTile(x, y).render(g, ((x * getTile(x, y).TILE_WIDTH) - (int)game.getGameCamera().getxOffset()), y * getTile(x, y).TILE_HEIGHT - (int) game.getGameCamera().getyOffset());
             }
         }
 

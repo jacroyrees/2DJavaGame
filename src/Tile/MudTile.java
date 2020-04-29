@@ -5,7 +5,7 @@ import graphics.Assets;
 public class MudTile extends Tile {
 
     public MudTile(int id) {
-        super(Assets.mudArray.get(1), id);
+        super(Assets.mudArray.get(0), id);
     }
 
 }

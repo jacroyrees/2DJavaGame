@@ -17,7 +17,9 @@ public class GameState extends State {
     public GameState(Game game) {
         super(game);
         player = new Player(game,0, 0, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10);
-        map = new Map("src/res/Level/Level1");
+        map = new Map(game, "src/res/Level/Level1");
+
+
     }
 
 
@@ -26,6 +28,7 @@ public class GameState extends State {
 
         map.update();
         player.update();
+
     }
 
     @Override

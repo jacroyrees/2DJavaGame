@@ -1,6 +1,7 @@
 package Entities.Creatures;
 
 import Entities.Entity;
+import tilegame.Game;
 
 import java.awt.*;
 
@@ -20,8 +21,8 @@ public abstract class Creature extends Entity {
 
 
 
-    public Creature(float x, float y, int width, int height, int hp){
-        super(x, y, width, height);
+    public Creature(Game game, float x, float y, int width, int height, int hp){
+        super(game, x, y, width, height);
         this.hp = hp;
         speed = DEFAULT_SPEED;
         xMove =0;

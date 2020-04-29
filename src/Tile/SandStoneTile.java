@@ -5,7 +5,7 @@ import graphics.Assets;
 public class SandStoneTile extends Tile{
 
     public SandStoneTile( int id) {
-        super(Assets.sandStoneArray.get(1), id);
+        super(Assets.sandStoneArray.get(0), id);
     }
 
     @Override

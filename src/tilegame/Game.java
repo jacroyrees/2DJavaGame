@@ -8,6 +8,7 @@ import UserIO.KeyManager;
 import display.Display;
 import graphics.Assets;
 
+import graphics.Camera;
 import graphics.SpriteSheet;
 
 import java.awt.*;
@@ -17,9 +18,11 @@ import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 
+
+    private Camera gameCamera;
     private Display display;
 
-    public int width, height;
+    private int width, height;
     public String title;
 
     private boolean isRunning = false;
@@ -56,6 +59,7 @@ public class Game implements Runnable {
         Assets.init();
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
+        gameCamera = new Camera(this, 0, 0);
 
         gameState = new GameState(this);
         menuState = new MenuState(this);
@@ -143,6 +147,9 @@ public class Game implements Runnable {
 
     }
 
+
+
+
     public KeyManager getKeyManager(){
         return keyManager;
     }
@@ -174,4 +181,17 @@ public class Game implements Runnable {
             }
         }
     }
+
+    public Camera getGameCamera(){
+        return gameCamera;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
 }
