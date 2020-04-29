@@ -54,7 +54,19 @@ public abstract class Creature extends Entity {
     }
 
     public void moveY(){
-        y += yMove;
+        if(yMove < 0){//up
+            int ty = (int)(y + yMove + bounds.y)/ 32;
+            if(!collisionWithTile((int)(x + bounds.x / 32), ty) && !collisionWithTile((int)(x + bounds.x + bounds.width) / 32, ty)){
+                y += yMove;
+            }
+
+        }else if(yMove > 0){//down
+            int ty = (int)(y + yMove + bounds.y + bounds.height)/ 32;
+            if(!collisionWithTile((int)(x + bounds.x / 32), ty) && !collisionWithTile((int)(x + bounds.x + bounds.width) / 32, ty)){
+                y += yMove;
+            }
+        }
+
     }
 
 
