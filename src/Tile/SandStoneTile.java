@@ -9,8 +9,8 @@ public class SandStoneTile extends Tile{
     }
 
     @Override
-    public boolean isCollidable() {
-        return false;
+    public boolean isSolid() {
+        return true;
     }
 
 }

@@ -23,11 +23,11 @@ public class Camera {
     }
 
 
-    public void moveCamera(float xAmount, float yAmount){
+  /*  public void moveCamera(float xAmount, float yAmount){
         xOffset += xAmount;
         yOffset += yAmount;
     }
-
+*/
     public float getxOffset() {
         return xOffset;
     }

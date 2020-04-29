@@ -19,6 +19,7 @@ import java.awt.image.BufferedImage;
 public class Game implements Runnable {
 
 
+    private Handler handler;
     private Camera gameCamera;
     private Display display;
 
@@ -60,10 +61,11 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         gameCamera = new Camera(this, 0, 0);
+        handler = new Handler(this);
 
-        gameState = new GameState(this);
-        menuState = new MenuState(this);
-        settingState = new SettingsState(this);
+        gameState = new GameState(handler);
+        menuState = new MenuState(handler);
+        settingState = new SettingsState(handler);
 
         State.setState(gameState);
 

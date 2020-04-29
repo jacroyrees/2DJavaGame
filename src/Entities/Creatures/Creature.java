@@ -2,6 +2,7 @@ package Entities.Creatures;
 
 import Entities.Entity;
 import tilegame.Game;
+import tilegame.Handler;
 
 import java.awt.*;
 
@@ -21,8 +22,8 @@ public abstract class Creature extends Entity {
 
 
 
-    public Creature(Game game, float x, float y, int width, int height, int hp){
-        super(game, x, y, width, height);
+    public Creature(Handler handler, float x, float y, int width, int height, int hp){
+        super(handler, x, y, width, height);
         this.hp = hp;
         speed = DEFAULT_SPEED;
         xMove =0;
@@ -30,10 +31,33 @@ public abstract class Creature extends Entity {
     }
 
     public void move(){
-        x += xMove;
+        moveX();
+        moveY();
+
+    }
+
+    public void moveX(){
+        if(xMove > 0){ //Moving right
+
+            int tx = (int) (x + xMove + bounds.x + bounds.width) / 32;
+            if(!collisionWithTile(tx, (int)(y + bounds.y)) && !collisionWithTile(tx, (int)(y + bounds.y) / 32)){
+                x += xMove;
+            }
+
+
+        }else if(xMove < 0){ //Moving left
+            x+= xMove;
+        }
+    }
+
+    public void moveY(){
         y += yMove;
     }
 
+
+    protected boolean collisionWithTile(int x, int y){
+        return handler.getMap().getTile(x, y).isSolid();
+    }
     public int getHp() {
         return hp;
     }

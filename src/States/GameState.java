@@ -5,6 +5,7 @@ import Entities.Creatures.Player;
 import Map.Map;
 import graphics.Assets;
 import tilegame.Game;
+import tilegame.Handler;
 
 import java.awt.*;
 
@@ -14,10 +15,12 @@ public class GameState extends State {
     private Player player;
     private Map map;
 
-    public GameState(Game game) {
-        super(game);
-        player = new Player(game,0, 0, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10);
-        map = new Map(game, "src/res/Level/Level1");
+    public GameState(Handler handler) {
+        super(handler);
+
+        map = new Map(handler, "src/res/Level/Level1");
+        handler.setMap(map);
+        player = new Player(handler,200, 200, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10);
 
 
     }

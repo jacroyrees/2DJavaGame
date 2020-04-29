@@ -3,8 +3,17 @@ package Tile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Tile {
+public abstract class Tile {
+    public int getTILE_WIDTH() {
+        return TILE_WIDTH;
+    }
 
+    public int getTILE_HEIGHT() {
+        return TILE_HEIGHT;
+    }
+
+    public final int TILE_WIDTH = 32,
+            TILE_HEIGHT = 32;
     public static Tile[] tiles = new Tile[256];
 
 
@@ -18,8 +27,7 @@ public class Tile {
 
 
 
-    public final int TILE_WIDTH = 32,
-                          TILE_HEIGHT = 32;
+
 
     protected BufferedImage image;
 
@@ -43,8 +51,8 @@ public class Tile {
 
     }
 
-    public boolean isCollidable(){
-        return true;
+    public boolean isSolid(){
+        return false;
     }
 
     public int getId() {

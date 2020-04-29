@@ -1,13 +1,19 @@
 package States;
 
 import tilegame.Game;
+import tilegame.Handler;
 
 import java.awt.*;
 
 public abstract class State {
 
     private static State currentState = null;
+    protected Handler handler;
 
+
+    public State(Handler handler){
+        this.handler = handler;
+    }
 
     public static void setState(State state){
         currentState = state;
@@ -22,9 +28,7 @@ public abstract class State {
 
     protected Game game;
 
-    public State(Game game){
-        this.game = game;
-    }
+
     public abstract void update();
 
 
