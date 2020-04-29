@@ -12,7 +12,7 @@ public abstract class Tile {
         return TILE_HEIGHT;
     }
 
-    public final int TILE_WIDTH = 32,
+    public static final int TILE_WIDTH = 32,
             TILE_HEIGHT = 32;
     public static Tile[] tiles = new Tile[256];
 

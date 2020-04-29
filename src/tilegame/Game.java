@@ -60,8 +60,9 @@ public class Game implements Runnable {
         Assets.init();
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
-        gameCamera = new Camera(this, 0, 0);
         handler = new Handler(this);
+        gameCamera = new Camera(handler, 0, 0);
+
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);

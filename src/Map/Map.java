@@ -27,14 +27,14 @@ public class Map {
     }
 
     public void render(Graphics g) {
-        int xStart = (int)Math.max(0, handler.getGameCamera().getxOffset() / 32);
-        int xEnd =  (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / 32 + 1);
-        int yStart = (int)Math.max(0, handler.getGameCamera().getyOffset() / 32);
-        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / 32 +1);
+        int xStart = (int)Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
+        int xEnd =  (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
+        int yStart = (int)Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_WIDTH);
+        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILE_HEIGHT +1);
 
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
-                getTile(x, y).render(g, ((x * getTile(x, y).TILE_WIDTH) - (int)handler.getGameCamera().getxOffset()), y * getTile(x, y).TILE_HEIGHT - (int) handler.getGameCamera().getyOffset());
+                getTile(x, y).render(g, ((x * Tile.TILE_WIDTH) - (int)handler.getGameCamera().getxOffset()), y * Tile.TILE_HEIGHT - (int) handler.getGameCamera().getyOffset());
             }
         }
 
@@ -67,6 +67,14 @@ public class Map {
                 tiles[x][y] = Utilities.parseInt(tokens[(x + y * width) + 4]);
             }
         }
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
     }
 }
 
