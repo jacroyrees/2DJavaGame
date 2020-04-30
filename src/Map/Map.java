@@ -68,7 +68,7 @@ public class Map {
         }
         Tile tile = Tile.tiles[tiles[x][y]];
         if (tile == null) {
-            return Tile.newDirtTile;
+            return Tile.DirtTile;
         } else {
 
             return tile;

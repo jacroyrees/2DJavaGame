@@ -1,9 +1,7 @@
-package Tile.GrassTiles.StoneTiles;
+package Tile.StoneTiles;
 
 import Tile.Tile;
 import graphics.Assets;
-
-import java.awt.image.BufferedImage;
 
 public class StoneTile extends Tile {
     public StoneTile( int id) {

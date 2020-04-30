@@ -19,7 +19,7 @@ public class Assets {
     public static ArrayList<BufferedImage> playerUp = new ArrayList<>();
     public static ArrayList<BufferedImage> playerDown = new ArrayList<>();
 
-    public static ArrayList<BufferedImage> newDirt = new ArrayList<>();
+    public static ArrayList<BufferedImage> dirtArray = new ArrayList<>();
     public static ArrayList<BufferedImage> tree = new ArrayList<>();
 
     private static final int width = 32;
@@ -28,7 +28,7 @@ public class Assets {
     public static void init() {
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
         SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
-        SpriteSheet dirtSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/Dirt.png"));
+        SpriteSheet dirtSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/DirtSprite.png"));
         SpriteSheet grassSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/GrassSprite.png"));
         SpriteSheet treeSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/treeSpriteSheet.png"));
 
@@ -77,9 +77,9 @@ public class Assets {
             }
         }
 
-        for (int j = 0; j < 64; j += 32) {
-            for (int k = 0; k < 64; k += 32) {
-                newDirt.add(dirtSprite.cropSheet(k, j, width, height));
+        for (int j = 0; j < 96; j += 32) {
+            for (int k = 0; k < 96; k += 32) {
+                dirtArray.add(dirtSprite.cropSheet(k, j, width, height));
             }
         }
 

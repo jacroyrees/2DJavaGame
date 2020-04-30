@@ -1,11 +1,9 @@
 package Tile;
 
 import Tile.DirtTiles.DirtTile;
-import Tile.GrassTiles.GrassLeftTile;
-import Tile.GrassTiles.GrassRightTile;
-import Tile.GrassTiles.GrassTile;
-import Tile.GrassTiles.StoneTiles.SandStoneTile;
-import Tile.GrassTiles.StoneTiles.StoneTile;
+import Tile.GrassTiles.*;
+import Tile.StoneTiles.SandStoneTile;
+import Tile.StoneTiles.StoneTile;
 import graphics.Assets;
 
 import java.awt.*;
@@ -26,16 +24,20 @@ public abstract class Tile {
     public static Tile[] tiles = new Tile[256];
 
     Random random = new Random();
-    public static Tile stoneTile = new StoneTile(0);
-    public static Tile sandTile = new SandTile(1);
-    public static Tile grassTile = new GrassTile(2);
-    //public static Tile mudTile = new MudTile(3);
-    public static Tile sandStoneTile = new SandStoneTile(4);
+    public static Tile stone = new StoneTile(0);
+    public static Tile DirtTile = new DirtTile(5);
 
-    public static Tile newDirtTile = new DirtTile(5);
-    public static Tile newGrassLeftTile = new GrassLeftTile(6);
-    public static Tile newGrassRightTile = new GrassRightTile(7);
-    public static Tile newGrassTile = new GrassTile(8);
+    public static Tile grassBottomLeft = new GrassBottomLeftTile(1);
+    public static Tile grassBottomRight = new GrassBottomRightTile(2);
+    public static Tile grassLeft = new GrassLeftTile(6);
+    public static Tile grassRight = new GrassRightTile(7);
+    public static Tile grassTopLeft = new GrassTopLeftTile(3);
+    public static Tile grassTopRight = new GrassTopRightTile(4);
+    public static Tile grassTopTile = new GrassTopTile(9);
+    public static Tile grassBottomTile = new GrassBottomTile(10);
+    public static Tile grassTile = new GrassTile(8);
+
+
 
 
     public BufferedImage getImage() {

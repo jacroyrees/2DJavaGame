@@ -1,4 +1,4 @@
-package Tile.GrassTiles.StoneTiles;
+package Tile.StoneTiles;
 
 import Tile.Tile;
 import graphics.Assets;

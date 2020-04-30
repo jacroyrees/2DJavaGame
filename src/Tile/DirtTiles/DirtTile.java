@@ -5,6 +5,6 @@ import graphics.Assets;
 
 public class DirtTile extends Tile {
     public DirtTile(int id) {
-        super(Assets.newDirt.get(2), id);
+        super(Assets.dirtArray.get(4), id);
     }
 }
