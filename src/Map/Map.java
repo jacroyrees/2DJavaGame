@@ -5,9 +5,11 @@ import Entities.EntityManager;
 import Entities.Static.Tree;
 import Tile.Tile;
 import Utilities.Utilities;
+import graphics.Assets;
 import tilegame.Handler;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Map {
     private Handler handler;
@@ -15,6 +17,7 @@ public class Map {
     private int[][] tiles;
     private int spawnX, spawnY;
     private String fileURL;
+    private Random random = new Random();
 
     public EntityManager getEntityManager() {
         return entityManager;
@@ -28,6 +31,10 @@ public class Map {
         this.handler = handler;
         entityManager = new EntityManager(handler, new Player(handler, 100, 100, 10));
         entityManager.addEntity(new Tree(handler, 100, 250));
+        entityManager.addEntity(new Tree(handler, 700, 450));
+        entityManager.addEntity(new Tree(handler, 650, 150));
+        entityManager.addEntity(new Tree(handler, 800, 570));
+        entityManager.addEntity(new Tree(handler, 400, 570));
         loadWorld(fileUrl);
 
         entityManager.getPlayer().setX(spawnX);
@@ -61,8 +68,9 @@ public class Map {
         }
         Tile tile = Tile.tiles[tiles[x][y]];
         if (tile == null) {
-            return Tile.mudTile;
+            return Tile.newDirtTile;
         } else {
+
             return tile;
         }
     }

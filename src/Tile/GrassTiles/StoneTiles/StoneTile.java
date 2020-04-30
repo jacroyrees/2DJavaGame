@@ -1,5 +1,6 @@
-package Tile;
+package Tile.GrassTiles.StoneTiles;
 
+import Tile.Tile;
 import graphics.Assets;
 
 import java.awt.image.BufferedImage;

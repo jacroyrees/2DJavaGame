@@ -29,6 +29,7 @@ public class Assets {
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
         SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
         SpriteSheet dirtSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/Dirt.png"));
+        SpriteSheet grassSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/GrassSprite.png"));
         SpriteSheet treeSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/treeSpriteSheet.png"));
 
 
@@ -45,12 +46,18 @@ public class Assets {
 
             stoneArray.add(tileSheet.cropSheet(ind, 0, width, height));
             sandArray.add(tileSheet.cropSheet(ind, 32, width, height));
-            grassArray.add(tileSheet.cropSheet(ind, 64, width, height));
+            //grassArray.add(tileSheet.cropSheet(ind, 64, width, height));
             mudArray.add(tileSheet.cropSheet(ind, 96, width, height));
             sandStoneArray.add(tileSheet.cropSheet(ind, 128, width, height));
 
             ind = ind + width;
 
+        }
+
+        for (int j = 0; j < 64; j += 32) {
+            for (int k = 0; k < 64; k += 32) {
+                grassArray.add(grassSprite.cropSheet(k, j, width, height));
+            }
         }
 
 
