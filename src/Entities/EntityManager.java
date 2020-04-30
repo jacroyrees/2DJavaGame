@@ -16,7 +16,7 @@ public class EntityManager {
 
     private Comparator<Entity> renderSorter = new Comparator<Entity>(){
         @Override
-        public int compare(Entity a, Entity b){s
+        public int compare(Entity a, Entity b){
             if(a.getY() + a.getHeight() < b.getY() + b.getHeight()){
                 return -1;
             }else{
