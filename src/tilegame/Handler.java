@@ -2,6 +2,7 @@ package tilegame;
 
 import Map.Map;
 import UserIO.KeyManager;
+import UserIO.MouseManager;
 import graphics.Camera;
 
 public class Handler {
@@ -46,4 +47,13 @@ public class Handler {
     public void setMap(Map map) {
         this.map = map;
     }
+
+    public MouseManager getMouseManager(){
+        return game.getMouseManager();
+    }
+
+
+
+
+
 }

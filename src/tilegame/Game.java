@@ -6,6 +6,7 @@ import States.MenuState;
 import States.SettingsState;
 import States.State;
 import UserIO.KeyManager;
+import UserIO.MouseManager;
 import Utilities.Utilities;
 import display.Display;
 import graphics.Assets;
@@ -41,11 +42,12 @@ public class Game implements Runnable {
     private BufferedImage test;
     private SpriteSheet sheet;
 
-    private State gameState;
-    private State menuState;
-    private State settingState;
+    public State gameState;
+    public State menuState;
+    public State settingState;
 
     private KeyManager keyManager;
+    private MouseManager mouseManager;
     private Sounds sounds;
 
 
@@ -56,6 +58,7 @@ public class Game implements Runnable {
         this.height = height;
         this.title = title;
         keyManager = new KeyManager();
+        mouseManager = new MouseManager();
         sounds = new Sounds();
 
 
@@ -63,18 +66,22 @@ public class Game implements Runnable {
 
     private void init()  {
 
-        Assets.init();
+
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
+        display.getFrame().addMouseListener(mouseManager);
+        display.getFrame().addMouseMotionListener(mouseManager);
         handler = new Handler(this);
         gameCamera = new Camera(handler, 0, 0);
-
+        Assets.init();
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         settingState = new SettingsState(handler);
 
-        State.setState(gameState);
+        State.setState(menuState);
 
 
     }
@@ -160,6 +167,8 @@ public class Game implements Runnable {
 
 
 
+
+    public MouseManager getMouseManager(){ return mouseManager;}
 
     public KeyManager getKeyManager(){
         return keyManager;
