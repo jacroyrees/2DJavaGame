@@ -1,5 +1,9 @@
 package display;
 
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,6 +11,9 @@ public class Display {
 
 
     private JFrame frame;
+
+    private Canvas canvas;
+
 
     public Canvas getCanvas() {
         return canvas;
@@ -18,7 +25,7 @@ public class Display {
 
 
 
-    private Canvas canvas;
+
 
     private String title;
     private int width, height;
