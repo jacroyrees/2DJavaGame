@@ -1,5 +1,6 @@
 package graphics;
 
+import Entities.Creatures.Creature;
 import Entities.Creatures.Player;
 import Entities.Entity;
 
@@ -26,9 +27,13 @@ public class Animation {
         lastTime = System.currentTimeMillis();
 
         if(timer > speed){
+            if(((Creature)e).getxMove() == 0 && ((Creature)e).getyMove() == 0){
+                index = 2;
+            }else {
 
                 index++;
                 timer = 0;
+            }
                 if (index >= frames.size()) {
                     index = 0;
                 }

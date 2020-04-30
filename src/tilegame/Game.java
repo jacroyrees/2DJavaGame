@@ -27,6 +27,7 @@ public class Game implements Runnable {
     private Camera gameCamera;
     private Display display;
 
+
     private int width, height;
     public String title;
 

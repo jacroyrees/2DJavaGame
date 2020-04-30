@@ -1,5 +1,8 @@
 package Map;
 
+import Entities.Creatures.Player;
+import Entities.EntityManager;
+import Entities.Static.Tree;
 import Tile.Tile;
 import Utilities.Utilities;
 import tilegame.Handler;
@@ -13,16 +16,27 @@ public class Map {
     private int spawnX, spawnY;
     private String fileURL;
 
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    private EntityManager entityManager;
+
 
     public Map(Handler handler, String fileUrl) {
         this.fileURL = fileUrl;
         this.handler = handler;
+        entityManager = new EntityManager(handler, new Player(handler, 100, 100, 10));
+        entityManager.addEntity(new Tree(handler, 100, 250));
         loadWorld(fileUrl);
+
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);
 
     }
 
     public void update() {
-
+        entityManager.update();
     }
 
     public void render(Graphics g) {
@@ -36,6 +50,8 @@ public class Map {
                 getTile(x, y).render(g, ((x * Tile.TILE_WIDTH) - (int)handler.getGameCamera().getxOffset()), y * Tile.TILE_HEIGHT - (int) handler.getGameCamera().getyOffset());
             }
         }
+
+        entityManager.render(g);
 
     }
 

@@ -1,6 +1,7 @@
 package graphics;
 
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class Assets {
@@ -19,6 +20,7 @@ public class Assets {
     public static ArrayList<BufferedImage> playerDown = new ArrayList<>();
 
     public static ArrayList<BufferedImage> newDirt = new ArrayList<>();
+    public static ArrayList<BufferedImage> tree = new ArrayList<>();
 
     private static final int width = 32;
     private static final int height = 32;
@@ -27,6 +29,16 @@ public class Assets {
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
         SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
         SpriteSheet dirtSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/Dirt.png"));
+        SpriteSheet treeSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/treeSpriteSheet.png"));
+
+
+        for (int j = 0; j < 128; j += 64) {
+            for (int k = 0; k < 128; k += 64) {
+                tree.add(treeSprite.cropSheet(k, j, width * 2, height * 2));
+            }
+        }
+
+
 
         int ind = 0;
         for (int i = 0; i < 10; i++) {
@@ -62,8 +74,8 @@ public class Assets {
             for (int k = 0; k < 64; k += 32) {
                 newDirt.add(dirtSprite.cropSheet(k, j, width, height));
             }
-
-
         }
+
+
     }
 }

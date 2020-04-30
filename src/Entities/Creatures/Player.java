@@ -11,12 +11,14 @@ import java.awt.image.BufferedImage;
 public class Player extends Creature {
 
     private Animation animDown, animUp, animLeft, animRight;
+    private Animation lastAnimation;
 
 
 
 
 
-    public Player(Handler handler, float x, float y, int width, int height, int hp) {
+
+    public Player(Handler handler, float x, float y, int hp) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, hp);
 
         bounds.x = 8;
@@ -28,6 +30,7 @@ public class Player extends Creature {
         animUp = new Animation(500, Assets.playerUp, this);
         animLeft = new Animation(500, Assets.playerLeft, this);
         animRight = new Animation(500, Assets.playerRight, this);
+        lastAnimation = animDown;
     }
 
 
@@ -76,13 +79,19 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAnimationFrame(){
         if(xMove < 0){
+            lastAnimation = animLeft;
             return animLeft.getCurrentFrame();
         }else if(xMove > 0){
+            lastAnimation = animRight;
             return animRight.getCurrentFrame();
         }else if(yMove < 0){
+            lastAnimation = animUp;
             return animUp.getCurrentFrame();
-        }else{
+        }else if(yMove > 0){
+            lastAnimation = animDown;
             return animDown.getCurrentFrame();
+        }else{
+            return lastAnimation.getCurrentFrame();
         }
     }
 

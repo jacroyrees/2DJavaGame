@@ -2,25 +2,37 @@ package States;
 
 import Entities.Creatures.Creature;
 import Entities.Creatures.Player;
+import Entities.Static.Tree;
 import Map.Map;
 
 import Sounds.Sounds;
+import javafx.scene.media.MediaPlayer;
 import tilegame.Handler;
 
+import javax.print.attribute.standard.Media;
 import java.awt.*;
+import java.io.File;
 
 public class GameState extends State {
 
 
+
+
     private Player player;
     private Map map;
-    private Sounds sounds;
+
+
+
+
     public GameState(Handler handler) {
         super(handler);
 
+
         map = new Map(handler, "src/res/Level/Level1");
         handler.setMap(map);
-        player = new Player(handler,200, 200, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, 10);
+
+
+
 
 
     }
@@ -30,7 +42,7 @@ public class GameState extends State {
     public void update() {
 
         map.update();
-        player.update();
+
 
     }
 
@@ -38,6 +50,7 @@ public class GameState extends State {
     public void render(Graphics g) {
 
         map.render(g);
-        player.render(g);
+
+
     }
 }
