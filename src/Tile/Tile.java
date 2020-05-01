@@ -79,18 +79,18 @@ public abstract class Tile {
 
     }
 
-    public static Tile stone = new StoneTile(0);
-    public static Tile DirtTile = new DirtTile(5);
+    public static Tile stone = new StoneTile(00);
+    public static Tile DirtTile = new DirtTile(15);
 
-    public static Tile grassBottomLeft = new GrassBottomLeftTile(1);
-    public static Tile grassBottomRight = new GrassBottomRightTile(2);
-    public static Tile grassLeft = new GrassLeftTile(6);
-    public static Tile grassRight = new GrassRightTile(7);
-    public static Tile grassTopLeft = new GrassTopLeftTile(3);
-    public static Tile grassTopRight = new GrassTopRightTile(4);
-    public static Tile grassTopTile = new GrassTopTile(9);
-    public static Tile grassBottomTile = new GrassBottomTile('a');
-    public static Tile grassTile = new GrassTile(8);
+    public static Tile grassBottomLeft = new GrassBottomLeftTile(10);
+    public static Tile grassBottomRight = new GrassBottomRightTile(12);
+    public static Tile grassLeft = new GrassLeftTile(15);
+    public static Tile grassRight = new GrassRightTile(17);
+    public static Tile grassTopLeft = new GrassTopLeftTile(13);
+    public static Tile grassTopRight = new GrassTopRightTile(14);
+    public static Tile grassTopTile = new GrassTopTile(19);
+    public static Tile grassBottomTile = new GrassBottomTile(11);
+    public static Tile grassTile = new GrassTile(18);
 
 
 
