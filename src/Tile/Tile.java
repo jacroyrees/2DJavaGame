@@ -15,6 +15,8 @@ public abstract class Tile {
     public static final int TILE_WIDTH = 32;
     public static final int TILE_HEIGHT = 32;
 
+    public static Tile[] tiles = new Tile[256];
+
     protected final int id;
     protected BufferedImage image;
     protected boolean traversable;
@@ -28,7 +30,7 @@ public abstract class Tile {
         this.traversable = traversable;
     }
 
-    public static Tile[] tiles = new Tile[256];
+
 
     public BufferedImage getImage() {
         return image;
@@ -65,7 +67,6 @@ public abstract class Tile {
 
     }
 
-/*
     public static Tile stone = new StoneTile(0);
     public static Tile DirtTile = new DirtTile(5);
 
@@ -79,7 +80,6 @@ public abstract class Tile {
     public static Tile grassBottomTile = new GrassBottomTile('a');
     public static Tile grassTile = new GrassTile(8);
 
-*/
 
 
     }
