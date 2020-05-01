@@ -3,6 +3,8 @@ package Map;
 import Entities.Creatures.Player;
 import Entities.EntityManager;
 import Entities.Static.Tree;
+import Tile.DirtTiles.DirtTile;
+import Tile.GrassTiles.GrassTile;
 import Tile.Tile;
 import Utilities.Utilities;
 import graphics.Assets;
@@ -64,11 +66,11 @@ public class Map {
 
     public Tile getTile(int x, int y) {
         if( x < 0 || y < 0 || x >= width || y >= height){
-            return Tile.grassTile;
+            return new GrassTile(1); // TODO: fix the ID here, i don't really get the system atm
         }
         Tile tile = Tile.tiles[tiles[x][y]];
         if (tile == null) {
-            return Tile.DirtTile;
+            return new DirtTile(2); // TODO: fix ID
         } else {
 
             return tile;

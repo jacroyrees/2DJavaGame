@@ -5,6 +5,6 @@ import graphics.Assets;
 
 public class GrassBottomTile extends Tile {
     public GrassBottomTile(int id) {
-        super(Assets.dirtArray.get(1), id);
+        super(Assets.dirtArray.get(1), id, true);
     }
 }

@@ -12,31 +12,23 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Tile {
-    public Tile(BufferedImage image, int id){
-        this.image = image;
-        if(this instanceof GrassTile){
-            this.image = Assets.grassArray.get(random.nextInt(Assets.grassArray.size()));
-        }
-        this.id = id;
-        tiles[id] = this;
-    }
+    public static final int TILE_WIDTH = 32;
+    public static final int TILE_HEIGHT = 32;
 
-    public int getTILE_WIDTH() {
-        return TILE_WIDTH;
-    }
-
-    public int getTILE_HEIGHT() {
-        return TILE_HEIGHT;
-    }
-
-    public static final int TILE_WIDTH = 32,
-            TILE_HEIGHT = 32;
-    public static Tile[] tiles = new Tile[256];
+    protected final int id;
+    protected BufferedImage image;
+    protected boolean traversable;
 
     Random random = new Random();
 
+    public Tile(BufferedImage image, int id, boolean traversable){
+        this.image = image;
+        this.id = id;
+        tiles[id] = this;
+        this.traversable = traversable;
+    }
 
-
+    public static Tile[] tiles = new Tile[256];
 
     public BufferedImage getImage() {
         return image;
@@ -45,12 +37,6 @@ public abstract class Tile {
     public void setImage(BufferedImage image) {
         this.image = image;
     }
-
-    protected BufferedImage image;
-
-
-
-    protected final int id;
 
 
 
@@ -63,8 +49,8 @@ public abstract class Tile {
 
     }
 
-    public boolean isSolid(){
-        return false;
+    public boolean isTraversable() {
+        return this.traversable;
     }
 
     public int getId() {
@@ -79,6 +65,7 @@ public abstract class Tile {
 
     }
 
+/*
     public static Tile stone = new StoneTile(0);
     public static Tile DirtTile = new DirtTile(5);
 
@@ -92,6 +79,7 @@ public abstract class Tile {
     public static Tile grassBottomTile = new GrassBottomTile('a');
     public static Tile grassTile = new GrassTile(8);
 
+*/
 
 
     }
