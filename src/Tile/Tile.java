@@ -68,11 +68,7 @@ public abstract class Tile {
 
     }
 
-<<<<<<< HEAD
-    public static Tile stone = new StoneTile(00);
-=======
 /*    public static Tile stone = new StoneTile(00);
->>>>>>> dcc635acce49dc13509686e0fefe02a4121439f2
     public static Tile DirtTile = new DirtTile(15);
 
     public static Tile grassBottomLeft = new GrassBottomLeftTile(10);
@@ -83,8 +79,6 @@ public abstract class Tile {
     public static Tile grassTopRight = new GrassTopRightTile(14);
     public static Tile grassTopTile = new GrassTopTile(19);
     public static Tile grassBottomTile = new GrassBottomTile(11);
-<<<<<<< HEAD
-=======
     public static Tile grassTile = new GrassTile(18);*/
 
     public static Tile stone = new StoneTile(00);
@@ -98,7 +92,6 @@ public abstract class Tile {
     public static Tile grassTopRight = new GrassTile(14, Edge.TOPRIGHT);
     public static Tile grassTopTile = new GrassTile(19, Edge.TOP);
     public static Tile grassBottomTile = new GrassTile(11, Edge.BOTTOMRIGHT);
->>>>>>> dcc635acce49dc13509686e0fefe02a4121439f2
     public static Tile grassTile = new GrassTile(18);
 
 
