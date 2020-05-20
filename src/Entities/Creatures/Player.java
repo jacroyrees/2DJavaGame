@@ -2,7 +2,6 @@ package Entities.Creatures;
 
 import graphics.Animation;
 import graphics.Assets;
-import tilegame.Game;
 import tilegame.Handler;
 
 import java.awt.*;

@@ -1,11 +1,21 @@
 package Map;
 
+
+import Entities.Creatures.DullCreature;
 import Entities.Creatures.Player;
 import Entities.EntityManager;
 import Entities.Static.Tree;
+<<<<<<< HEAD
+
+import HUD.HUDManager;
+import HUD.HealthBar;
+=======
+import Tile.DirtTiles.DirtTile;
+import Tile.GrassTiles.GrassTile;
+>>>>>>> jac
 import Tile.Tile;
 import Utilities.Utilities;
-import graphics.Assets;
+
 import tilegame.Handler;
 
 import java.awt.*;
@@ -18,18 +28,24 @@ public class Map {
     private int spawnX, spawnY;
     private String fileURL;
     private Random random = new Random();
+    private Player player;
 
     public EntityManager getEntityManager() {
         return entityManager;
     }
+    public HUDManager getHudManager(){ return hudManager;}
 
     private EntityManager entityManager;
-
-
+    private HUDManager hudManager;
     public Map(Handler handler, String fileUrl) {
         this.fileURL = fileUrl;
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 100, 100, 10));
+        entityManager = new EntityManager(handler, player = new Player(handler, 100, 100, 10));
+        hudManager = new HUDManager(handler);
+        hudManager.addHUD(new HealthBar(handler,20, 200));
+      //  640, 360
+        entityManager.addEntity(new DullCreature(handler, 300, 600, width, height, 10, player));
+
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Tree(handler, 700, 450));
         entityManager.addEntity(new Tree(handler, 650, 150));
@@ -43,7 +59,10 @@ public class Map {
     }
 
     public void update() {
+
         entityManager.update();
+        hudManager.update();
+
     }
 
     public void render(Graphics g) {
@@ -59,16 +78,17 @@ public class Map {
         }
 
         entityManager.render(g);
+        hudManager.render(g);
 
     }
 
     public Tile getTile(int x, int y) {
         if( x < 0 || y < 0 || x >= width || y >= height){
-            return Tile.grassTile;
+            return new GrassTile(1); // TODO: fix the ID here, i don't really get the system atm
         }
         Tile tile = Tile.tiles[tiles[x][y]];
         if (tile == null) {
-            return Tile.DirtTile;
+            return new DirtTile(2); // TODO: fix ID
         } else {
 
             return tile;

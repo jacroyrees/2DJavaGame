@@ -7,10 +7,9 @@ import States.SettingsState;
 import States.State;
 import UserIO.KeyManager;
 import UserIO.MouseManager;
-import Utilities.Utilities;
 import display.Display;
-import graphics.Assets;
 
+import graphics.Assets;
 import graphics.Camera;
 import graphics.SpriteSheet;
 
@@ -81,7 +80,11 @@ public class Game implements Runnable {
         menuState = new MenuState(handler);
         settingState = new SettingsState(handler);
 
+
+        State.setState(gameState);
+
         State.setState(menuState);
+
 
 
     }

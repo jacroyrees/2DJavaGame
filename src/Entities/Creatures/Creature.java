@@ -1,10 +1,7 @@
 package Entities.Creatures;
 
 import Entities.Entity;
-import tilegame.Game;
 import tilegame.Handler;
-
-import java.awt.*;
 
 public abstract class Creature extends Entity {
 
@@ -30,6 +27,7 @@ public abstract class Creature extends Entity {
         yMove = 0;
     }
 
+
     public void move(){
         if(!checkEntityCollisions(xMove, 0f)) {
             moveX();
@@ -37,6 +35,7 @@ public abstract class Creature extends Entity {
             moveY();
         }
     }
+
 
     public void moveX(){
         if(xMove > 0){ //Moving right
@@ -81,8 +80,9 @@ public abstract class Creature extends Entity {
     }
 
 
+
     protected boolean collisionWithTile(int x, int y){
-        return handler.getMap().getTile(x, y).isSolid();
+        return !handler.getMap().getTile(x, y).isTraversable();
     }
     public int getHp() {
         return hp;
