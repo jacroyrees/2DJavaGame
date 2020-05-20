@@ -1,11 +1,9 @@
 package graphics;
 
 import Entities.Creatures.Creature;
-import Entities.Creatures.Player;
 import Entities.Entity;
 
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Animation {

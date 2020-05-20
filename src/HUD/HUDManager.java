@@ -1,11 +1,8 @@
 package HUD;
 
-import Entities.Creatures.Player;
-import Entities.Entity;
 import tilegame.Handler;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HUDManager {

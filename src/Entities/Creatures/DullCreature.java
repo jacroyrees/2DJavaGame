@@ -1,6 +1,5 @@
 package Entities.Creatures;
 
-import Entities.EntityManager;
 import graphics.Assets;
 import tilegame.Handler;
 

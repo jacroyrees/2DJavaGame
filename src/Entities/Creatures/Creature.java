@@ -1,10 +1,7 @@
 package Entities.Creatures;
 
 import Entities.Entity;
-import tilegame.Game;
 import tilegame.Handler;
-
-import java.awt.*;
 
 public abstract class Creature extends Entity {
 
@@ -31,11 +28,57 @@ public abstract class Creature extends Entity {
     }
 
 
+    public void move(){
+        if(!checkEntityCollisions(xMove, 0f)) {
+            moveX();
+        }if(!checkEntityCollisions(0f, yMove)) {
+            moveY();
+        }
+    }
 
 
-    public abstract void move();
-    public abstract void moveX();
-    public abstract void moveY();
+    public void moveX(){
+        if(xMove > 0){ //Moving right
+
+            int tx = (int) (x + xMove + bounds.x + bounds.width) / 32;
+            if(!collisionWithTile(tx, (int)(y + bounds.y)) && !collisionWithTile(tx, (int)(y + bounds.y) / 32)){
+                x += xMove;
+            }else{
+                x = tx * 32 - bounds.x - bounds.width - 1;
+
+            }
+
+
+        }else if(xMove < 0){ //Moving left
+            int tx = (int) (x + xMove + bounds.x) / 32;
+            if(!collisionWithTile(tx, (int)(y + bounds.y)) && !collisionWithTile(tx, (int)(y + bounds.y) / 32)){
+                x += xMove;
+            }else{
+                x = tx * 32 + 32 - bounds.x;
+            }
+        }
+    }
+
+    public void moveY(){
+        if(yMove < 0){//up
+            int ty = (int)(y + yMove + bounds.y)/ 32;
+            if(!collisionWithTile((int)(x + bounds.x / 32), ty) && !collisionWithTile((int)(x + bounds.x + bounds.width) / 32, ty)){
+                y += yMove;
+            }else{
+                y = ty * 32 + 32 - bounds.y;
+            }
+
+        }else if(yMove > 0){//down
+            int ty = (int)(y + yMove + bounds.y + bounds.height)/ 32;
+            if(!collisionWithTile((int)(x + bounds.x / 32), ty) && !collisionWithTile((int)(x + bounds.x + bounds.width) / 32, ty)){
+                y += yMove;
+            }else{
+                y = ty * 32 - bounds.y - bounds.height - 1;
+            }
+        }
+
+    }
+
 
 
     protected boolean collisionWithTile(int x, int y){

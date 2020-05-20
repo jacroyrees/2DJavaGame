@@ -2,7 +2,6 @@ package Tile;
 
 import Tile.DirtTiles.DirtTile;
 import Tile.GrassTiles.*;
-import Tile.StoneTiles.SandStoneTile;
 import Tile.StoneTiles.StoneTile;
 import graphics.Assets;
 

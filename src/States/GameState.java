@@ -1,17 +1,9 @@
 package States;
 
-import Entities.Creatures.Creature;
-import Entities.Creatures.Player;
-import Entities.Static.Tree;
 import Map.Map;
-
-import Sounds.Sounds;
-import javafx.scene.media.MediaPlayer;
 import tilegame.Handler;
 
-import javax.print.attribute.standard.Media;
 import java.awt.*;
-import java.io.File;
 
 public class GameState extends State {
 
