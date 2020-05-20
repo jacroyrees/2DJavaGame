@@ -5,9 +5,14 @@ import Entities.Creatures.DullCreature;
 import Entities.Creatures.Player;
 import Entities.EntityManager;
 import Entities.Static.Tree;
+<<<<<<< HEAD
 
 import HUD.HUDManager;
 import HUD.HealthBar;
+=======
+import Tile.DirtTiles.DirtTile;
+import Tile.GrassTiles.GrassTile;
+>>>>>>> jac
 import Tile.Tile;
 import Utilities.Utilities;
 
@@ -79,11 +84,11 @@ public class Map {
 
     public Tile getTile(int x, int y) {
         if( x < 0 || y < 0 || x >= width || y >= height){
-            return Tile.grassTile;
+            return new GrassTile(1); // TODO: fix the ID here, i don't really get the system atm
         }
         Tile tile = Tile.tiles[tiles[x][y]];
         if (tile == null) {
-            return Tile.DirtTile;
+            return new DirtTile(2); // TODO: fix ID
         } else {
 
             return tile;
