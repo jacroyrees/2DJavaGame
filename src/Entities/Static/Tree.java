@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class Tree extends StaticEntity {
+
     public Tree(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH * 2, Tile.TILE_HEIGHT * 2);
         bounds.x = 10;

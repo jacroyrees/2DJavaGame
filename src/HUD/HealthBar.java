@@ -1,5 +1,6 @@
 package HUD;
 
+import Entities.Creatures.Player;
 import graphics.Assets;
 import tilegame.Handler;
 
@@ -10,21 +11,25 @@ public class HealthBar extends HUD {
     private Handler handler;
     private float x, y;
     private int width, height;
+    Player player;
 
-    public HealthBar(Handler handler, float x, float y) {
-        super(handler, x, y, Assets.HUDList.get(0).getWidth(), Assets.HUDList.get(0).getHeight());
+    public HealthBar(Handler handler, float x, float y, Player player) {
+        super(handler, x, y, Assets.HUDList.get(0).getWidth(), Assets.HUDList.get(0).getHeight(), player);
+        this.x = x;
+        this.y = y;
+        this.handler = handler;
 
     }
 
-    @Override
+
     public void update() {
-
+        getPlayerVariables();
     }
 
-    @Override
+
     public void render(Graphics g) {
 
-        g.drawImage(Assets.HUDList.get(0), (int)x, (int)y, width, height, null);
+        g.drawImage(Assets.HUDList.get(0),(int)(x), (int)(y), null);
 
     }
 }

@@ -10,86 +10,47 @@ public class DullCreature extends Creature {
     public DullCreature(Handler handler, float x, float y, int width, int height, int hp, Player player) {
         super(handler, x, y, width, height, hp);
         this.player = player;
-        this.setSpeed(speed / 2);
+        this.speed = speed / 2;
 
 
-    }
+        bounds.x = 8;
+        bounds.y = 16;
+        bounds.width = 16;
+        bounds.height = 16;
 
-
-
-    public  void move(){
-        if(!checkEntityCollisions(xMove, 0f)) {
-            moveX();
-        }if(!checkEntityCollisions(0f, yMove)) {
-            moveY();
-        }
-    }
-
-    @Override
-    public void moveY(){
-
-            getDirection();
-            if(yMove < 0){//up
-                int ty = (int)(y + yMove + bounds.y)/ 32;
-                if(!collisionWithTile((int)(x + bounds.x / 32), ty) && !collisionWithTile((int)(x + bounds.x + bounds.width) / 32, ty)){
-                    getDirection();
-                    y += yMove;
-                }else{
-
-                    y = ty * 32 + 32 - bounds.y;
-                }
-
-            }else if(yMove >= 0){//down
-                int ty = (int)(y + yMove + bounds.y + bounds.height)/ 32;
-                if(!collisionWithTile((int)(x + bounds.x / 32), ty) && !collisionWithTile((int)(x + bounds.x + bounds.width) / 32, ty)){
-                    getDirection();
-                    y += yMove;
-                }else{
-                    y = ty * 32 - bounds.y - bounds.height - 1;
-                }
-            }
 
 
     }
 
-    public void getDirection(){
-        if(this.getX() > player.getX()){
+
+
+
+    private void getUserInput(){
+        xMove = 0;
+        yMove = 0;
+
+
+        if (this.getX() > player.getX()) {
             this.xMove = -speed;
-        }else{
+        } else {
             this.xMove = +speed;
+
         }
 
-        if(this.getY() > player.getY()){
+
+        if (this.getY() > player.getY()) {
             this.yMove = -speed;
-        }else{
+        } else {
             this.yMove = +speed;
         }
+
     }
 
-    @Override
-    public void moveX(){
-        if(xMove > 0){ //Moving right
-
-            int tx = (int) (x + xMove + bounds.x + bounds.width) / 32;
-            if(!collisionWithTile(tx, (int)(y + bounds.y)) && !collisionWithTile(tx, (int)(y + bounds.y) / 32)){
-                getDirection();
-                x += xMove;
-            }else{
-                x = tx * 32 - bounds.x - bounds.width - 1;
-
-            }
 
 
-        }else if(xMove <= 0){ //Moving left
-            int tx = (int) (x + xMove + bounds.x) / 32;
-            if(!collisionWithTile(tx, (int)(y + bounds.y)) && !collisionWithTile(tx, (int)(y + bounds.y) / 32)){
-                getDirection();
-                x += xMove;
-            }else{
-                x = tx * 32 + 32 - bounds.x;
-            }
-        }
-    }
+
+
+
 
 
 
@@ -160,6 +121,8 @@ public class DullCreature extends Creature {
 
 
     public void update() {
+
+        getUserInput();
         move();
 
     }
