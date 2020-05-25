@@ -32,7 +32,7 @@ public class Assets {
 
 
     public static void init() {
-        SpriteSheet HUD = new SpriteSheet(ImageLoader.loadImage("/res/textures/rsz_pixelart.png"));
+        SpriteSheet HUD = new SpriteSheet(ImageLoader.loadImage("/res/textures/HUD/HealthBar.png"));
 
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
         SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
@@ -41,9 +41,17 @@ public class Assets {
         SpriteSheet treeSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/treeSpriteSheet.png"));
 
 
-        HUDList.add(HUD.cropSheet(0,0,256,128));
+        //HUDList.add(HUD.cropSheet(0,0,256,128));
         SpriteSheet creatureSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/CreatureTest.png"));
         creature.add(creatureSprite.cropSheet(0, 0, width, height));
+
+        for (int j = 0; j < 300; j += 30) {
+
+                HUDList.add(HUD.cropSheet(0, j, 300, 30));
+            }
+
+
+
 
         for (int j = 0; j < 128; j += 64) {
             for (int k = 0; k < 128; k += 64) {

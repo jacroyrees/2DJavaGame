@@ -40,8 +40,8 @@ public class Map {
         this.fileURL = fileUrl;
         this.handler = handler;
         entityManager = new EntityManager(handler, player = new Player(handler, 100, 100, 10));
-        hudManager = new HUDManager(handler);
-        hudManager.addHUD(new HealthBar(handler,20, 200));
+        hudManager = new HUDManager(handler, player);
+        hudManager.addHUD(new HealthBar(handler, 10, 320, player));
       //  640, 360
         entityManager.addEntity(new DullCreature(handler, 300, 600, width, height, 10, player));
 
@@ -76,8 +76,10 @@ public class Map {
             }
         }
 
+
         entityManager.render(g);
         hudManager.render(g);
+
 
     }
 

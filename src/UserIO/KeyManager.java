@@ -25,7 +25,7 @@ public class KeyManager implements KeyListener {
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         keys[keyEvent.getKeyCode()] = true;
-        System.out.println("PRESSED!");
+     //   System.out.println("PRESSED!");
     }
 
     @Override
