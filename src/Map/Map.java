@@ -5,14 +5,13 @@ import Entities.Creatures.DullCreature;
 import Entities.Creatures.Player;
 import Entities.EntityManager;
 import Entities.Static.Tree;
-<<<<<<< HEAD
 
 import HUD.HUDManager;
 import HUD.HealthBar;
-=======
+
 import Tile.DirtTiles.DirtTile;
 import Tile.GrassTiles.GrassTile;
->>>>>>> jac
+
 import Tile.Tile;
 import Utilities.Utilities;
 

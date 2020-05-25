@@ -44,6 +44,8 @@ public class Player extends Creature {
         handler.getGameCamera().centerOnEntity(this);
     }
 
+
+
     private void getUserInput(){
         xMove = 0;
         yMove = 0;
