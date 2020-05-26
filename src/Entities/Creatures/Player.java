@@ -1,5 +1,6 @@
 package Entities.Creatures;
 
+import Entities.Entity;
 import graphics.Animation;
 import graphics.Assets;
 import tilegame.Handler;
@@ -11,7 +12,7 @@ public class Player extends Creature {
 
     private Animation animDown, animUp, animLeft, animRight;
     private Animation lastAnimation;
-
+    public static int hp;
 
 
 
@@ -19,7 +20,7 @@ public class Player extends Creature {
 
     public Player(Handler handler, float x, float y, int hp) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, hp);
-
+        this.hp = hp;
         bounds.x = 8;
         bounds.y = 16;
         bounds.width = 16;
@@ -30,6 +31,12 @@ public class Player extends Creature {
         animLeft = new Animation(500, Assets.playerLeft, this);
         animRight = new Animation(500, Assets.playerRight, this);
         lastAnimation = animDown;
+        System.out.println("Hp" + hp);
+    }
+
+    @Override
+    public int getHp(){
+        return this.hp;
     }
 
 
@@ -95,5 +102,26 @@ public class Player extends Creature {
             return lastAnimation.getCurrentFrame();
         }
     }
+
+    @Override
+    public boolean checkEntityCollisions(float xOffset, float yOffset){
+        for(Entity e : handler.getMap().getEntityManager().getEntities()){
+            if(e.equals(this)){
+                continue;
+            }
+            if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
+                if(e instanceof Creature){
+                    this.hp = hp - ((Creature) e).getDamage();
+                }
+
+                return true;
+
+            }
+        }
+        return false;
+    }
+
+
+
 
 }

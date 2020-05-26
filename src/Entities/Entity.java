@@ -1,5 +1,7 @@
 package Entities;
 
+import Entities.Creatures.Creature;
+import Entities.Creatures.Player;
 import tilegame.Game;
 import tilegame.Handler;
 
@@ -37,7 +39,9 @@ public abstract class Entity {
                 continue;
             }
             if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
+
                 return true;
+
             }
         }
         return false;

@@ -11,6 +11,10 @@ public abstract class Creature extends Entity {
 
 
     protected int hp;
+
+
+
+    protected int damage = 1;
     protected float speed;
     public static final int DEFAULT_CREATURE_WIDTH = 32,
                             DEFAULT_CREATURE_HEIGHT = 32;
@@ -116,5 +120,8 @@ public abstract class Creature extends Entity {
         this.yMove = yMove;
     }
 
+    public int getDamage() {
+        return damage;
+    }
 
 }
