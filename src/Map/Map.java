@@ -39,6 +39,7 @@ public class Map {
     public Map(Handler handler, String fileUrl) {
         this.fileURL = fileUrl;
         this.handler = handler;
+
         entityManager = new EntityManager(handler, player = new Player(handler, 100, 100, 10));
         hudManager = new HUDManager(handler, player);
         hudManager.addHUD(new HealthBar(handler, 10, 320, player));
@@ -61,6 +62,7 @@ public class Map {
 
         entityManager.update();
         hudManager.update();
+
 
     }
 

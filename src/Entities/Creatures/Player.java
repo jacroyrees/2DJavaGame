@@ -8,11 +8,13 @@ import tilegame.Handler;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Player extends Creature {
+public class Player extends Creature{
 
     private Animation animDown, animUp, animLeft, animRight;
     private Animation lastAnimation;
     public static int hp;
+    private final long PERIOD = 1000L; // Adjust to suit timing
+    private long lastTime = System.currentTimeMillis() - PERIOD;
 
 
 
@@ -46,6 +48,7 @@ public class Player extends Creature {
         animUp.update();
         animLeft.update();
         animRight.update();
+        onTick();
         getUserInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
@@ -104,24 +107,44 @@ public class Player extends Creature {
     }
 
     @Override
-    public boolean checkEntityCollisions(float xOffset, float yOffset){
-        for(Entity e : handler.getMap().getEntityManager().getEntities()){
-            if(e.equals(this)){
+    public boolean checkEntityCollisions(float xOffset, float yOffset) {
+        for (Entity e : handler.getMap().getEntityManager().getEntities()) {
+            if (e.equals(this)) {
                 continue;
             }
-            if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
-                if(e instanceof Creature){
-                    this.hp = hp - ((Creature) e).getDamage();
+            if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))) {
+                if (e instanceof Creature) {
+
+                    if (hp - ((Creature) e).getDamage() < 0) {
+                        this.hp = 0;
+
+                    } else {
+                        this.hp = hp - ((Creature) e).getDamage();
+                    }
+
+
+
                 }
-
                 return true;
-
             }
         }
-        return false;
+            return false;
+        }
+
+
+
+
+
+    public void onTick() {//Called every "Tick"
+        long thisTime = System.currentTimeMillis();
+
+        if ((thisTime - lastTime) >= PERIOD) {
+            lastTime = thisTime;
+
+            if(hp < 10) { //If my variable is true
+                hp = hp+1;//Setting my boolean to true
+            System.out.println(hp);
+            }
+        }
     }
-
-
-
-
 }
