@@ -41,6 +41,10 @@ public abstract class Creature extends Entity {
     }
 
 
+
+
+
+
     public void moveX(){
         if(xMove > 0){ //Moving right
 
@@ -81,6 +85,12 @@ public abstract class Creature extends Entity {
             }
         }
 
+    }
+
+    public void damage(){
+        if(checkEntityCollisions(0f, 0f)){
+
+        }
     }
 
 
