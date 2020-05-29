@@ -118,6 +118,7 @@ public class Player extends Creature{
         }
     }
 
+    //TODO :: Sort out the bug where user doesnt lose health when standing next to entity
 
 
     public void takeDamage(Entity e){
