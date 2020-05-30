@@ -25,27 +25,39 @@ public class DullCreature extends Creature {
 
 
 
-    private void getUserInput(){
+    private void getUserInput() {
         xMove = 0;
         yMove = 0;
 
 
-        if (this.getX() > player.getX()) {
-            this.xMove = -speed;
-        } else {
-            this.xMove = +speed;
-
-        }
+        if ((((this.getX() >= player.getX()) && this.getX() <= player.getX() + 200) || ((this.getX() < player.getX())
+                && (this.getX() > player.getX() - 200))) && (((this.getY() >= player.getY()) && ((this.getY() <=player.getY() + 200))) || ((this.getY() <= player.getY()) && this.getY() >= player.getY() - 200))) {
 
 
-        if (this.getY() > player.getY()) {
-            this.yMove = -speed;
-        } else {
-            this.yMove = +speed;
+            if (((this.getX() > player.getX()) && this.getX() < player.getX() + 200)) {
+                this.xMove = -speed;
+            } else if ((this.getX() < player.getX()) && this.getX() > player.getX() - 200) {
+                this.xMove = +speed;
+
+            } else {
+                this.xMove = 0;
+            }
+
+
+            if ((this.getY() > player.getY()) && this.getY() < player.getY() + 200) {
+                this.yMove = -speed;
+            } else if ((this.getY() < player.getY()) && this.getY() > player.getY() - 200) {
+                this.yMove = +speed;
+            } else {
+                this.yMove = 0;
+            }
+
+
+
+
         }
 
     }
-
 
 
 
