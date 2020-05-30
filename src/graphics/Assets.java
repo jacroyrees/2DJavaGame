@@ -43,7 +43,11 @@ public class Assets {
 
         //HUDList.add(HUD.cropSheet(0,0,256,128));
         SpriteSheet creatureSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/CreatureTest.png"));
-        creature.add(creatureSprite.cropSheet(0, 0, width, height));
+
+        for(int i = 0; i < 224; i += 32){
+            creature.add(creatureSprite.cropSheet(i, 0, width, height));
+
+        }
 
         for (int j = 0; j < 300; j += 30) {
 

@@ -4,15 +4,19 @@ import graphics.Assets;
 import tilegame.Handler;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class DullCreature extends Creature {
     private Player player;
-    public DullCreature(Handler handler, float x, float y, int width, int height, int hp, Player player) {
+    private BufferedImage image;
+    public DullCreature(Handler handler, float x, float y, int width, int height, int hp, Player player, int damage) {
         super(handler, x, y, width, height, hp);
         this.player = player;
         this.speed = speed / 2;
-
-
+        Random random = new Random();
+        image = Assets.creature.get(random.nextInt(7));
+        this.damage = damage;
         bounds.x = 8;
         bounds.y = 16;
         bounds.width = 16;
@@ -56,6 +60,7 @@ public class DullCreature extends Creature {
 
 
         }
+
 
     }
 
@@ -141,7 +146,7 @@ public class DullCreature extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.creature.get(0),(int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), null);
+        g.drawImage(image,(int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), null);
 
     }
 

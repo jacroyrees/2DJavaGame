@@ -44,7 +44,8 @@ public class Map {
         hudManager = new HUDManager(handler, player);
         hudManager.addHUD(new HealthBar(handler, 10, 320, player));
       //  640, 360
-        entityManager.addEntity(new DullCreature(handler, 300, 600, width, height, 10, player));
+        entityManager.addEntity(new DullCreature(handler, 300, 600, width, height, 10, player, 5));
+        entityManager.addEntity(new DullCreature(handler, 500, 300, width, height, 10, player, 2));
 
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Tree(handler, 700, 450));
