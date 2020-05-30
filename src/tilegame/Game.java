@@ -17,7 +17,7 @@ import graphics.SpriteSheet;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-
+import java.util.Timer;
 
 
 public class Game implements Runnable {
@@ -48,6 +48,8 @@ public class Game implements Runnable {
     private KeyManager keyManager;
     private MouseManager mouseManager;
     private Sounds sounds;
+
+    public static Timer timer = new Timer();
 
 
 

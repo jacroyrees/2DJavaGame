@@ -15,6 +15,9 @@ public class Player extends Creature{
     public static int hp;
     private final long PERIOD = 1500L; // Adjust to suit timing
     private long lastTime = System.currentTimeMillis() - PERIOD;
+    public static boolean damageTaken = false;
+
+
 
 
 
@@ -76,6 +79,7 @@ public class Player extends Creature{
             xMove = speed;
 
         }
+
     }
 
     @Override
@@ -108,7 +112,9 @@ public class Player extends Creature{
     public void updateHealth() {//Called every "Tick"
         long thisTime = System.currentTimeMillis();
 
-        if ((thisTime - lastTime) >= PERIOD) {
+
+        if ((thisTime - lastTime) >= PERIOD && !damageTaken) {
+
             lastTime = thisTime;
 
             if(hp < 10) { //If my variable is true
@@ -121,36 +127,9 @@ public class Player extends Creature{
     //TODO :: Sort out the bug where user doesnt lose health when standing next to entity
 
 
-    public void takeDamage(Entity e){
-        long thisTime = System.currentTimeMillis();
-        if ((thisTime - lastTime) >= (PERIOD/4)) {
-            lastTime = thisTime;
 
-            if((hp - ((Creature) e).getDamage()) < 0){
-                hp = 0;
-            }else{
-                hp = hp - ((Creature) e).getDamage();
-            }
 
-            }
 
-    }
-    @Override
-    public boolean checkEntityCollisions(float xOffset, float yOffset){
-        for(Entity e : handler.getMap().getEntityManager().getEntities()){
-            if(e.equals(this)){
-                continue;
-            }
-            if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
-                if(e instanceof Creature){
-                    takeDamage(e);
-                }
-                return true;
-
-            }
-        }
-        return false;
-    }
 
 
 
