@@ -10,6 +10,10 @@ import java.util.Random;
 public class DullCreature extends Creature {
     private Player player;
     private BufferedImage image;
+    private int lastDirectionX;
+    private int lastDirectionY;
+    private int index;
+    private int randomDurationMove;
     public DullCreature(Handler handler, float x, float y, int width, int height, int hp, Player player, int damage) {
         super(handler, x, y, width, height, hp);
         this.player = player;
@@ -59,6 +63,8 @@ public class DullCreature extends Creature {
 
 
 
+        }else{
+            randomDirection();
         }
 
 
@@ -70,6 +76,34 @@ public class DullCreature extends Creature {
 
 
 
+    public void randomDirection(){
+        Random randomdirection = new Random();
+        Random randomDuration = new Random();
+
+        if(index <= randomDurationMove) {
+            xMove = lastDirectionX;
+            yMove = lastDirectionY;
+            index++;
+        }else {
+            randomDurationMove = randomdirection.nextInt(50);
+            index = 0;
+            int randomInt = randomdirection.nextInt(4);
+            if (randomInt == 0) {
+                xMove = +speed;
+                lastDirectionX = (int)xMove;
+            } else if (randomInt == 1) {
+                xMove = -speed;
+                lastDirectionX = (int)xMove;
+            } else if (randomInt == 2) {
+                yMove = +speed;
+                lastDirectionY = (int)yMove;
+            } else if (randomInt == 3) {
+                yMove = -speed;
+                lastDirectionY = (int)yMove;
+            }
+            System.out.println(randomInt);
+        }
+    }
 
 
 /*
