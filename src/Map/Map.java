@@ -9,6 +9,7 @@ import Entities.Static.Tree;
 import HUD.HUDManager;
 import HUD.HealthBar;
 
+import HUD.Inventory;
 import Tile.DirtTiles.DirtTile;
 import Tile.GrassTiles.GrassTile;
 
@@ -42,6 +43,7 @@ public class Map {
 
         entityManager = new EntityManager(handler, player = new Player(handler, 100, 100, 10));
         hudManager = new HUDManager(handler, player);
+        hudManager.addHUD(new Inventory(handler, 540,321, player));
         hudManager.addHUD(new HealthBar(handler, 10, 320, player));
       //  640, 360
         entityManager.addEntity(new DullCreature(handler, 300, 600, width, height, 10, player, 5));

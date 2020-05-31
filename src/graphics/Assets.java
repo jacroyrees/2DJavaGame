@@ -23,7 +23,7 @@ public class Assets {
     public static ArrayList<BufferedImage> dirtArray = new ArrayList<>();
     public static ArrayList<BufferedImage> tree = new ArrayList<>();
     public static ArrayList<BufferedImage> HUDList = new ArrayList<>();
-
+    public static ArrayList<BufferedImage> Inventory = new ArrayList<>();
 
 
     private static final int width = 32;
@@ -33,6 +33,7 @@ public class Assets {
 
     public static void init() {
         SpriteSheet HUD = new SpriteSheet(ImageLoader.loadImage("/res/textures/HUD/HealthBar.png"));
+        SpriteSheet inventory = new SpriteSheet(ImageLoader.loadImage("/res/textures/HUD/inventory.png"));
 
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
         SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
@@ -52,8 +53,9 @@ public class Assets {
         for (int j = 0; j < 300; j += 30) {
 
                 HUDList.add(HUD.cropSheet(0, j, 300, 30));
-            }
 
+            }
+            Inventory.add(inventory.cropSheet(0, 0, 300, 39));
 
 
 
