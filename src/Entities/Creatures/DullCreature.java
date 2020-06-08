@@ -101,7 +101,7 @@ public class DullCreature extends Creature {
                 yMove = -speed;
                 lastDirectionY = (int)yMove;
             }
-            System.out.println(randomInt);
+            //System.out.println(randomInt);
         }
     }
 

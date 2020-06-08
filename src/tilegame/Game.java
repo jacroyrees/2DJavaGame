@@ -98,7 +98,9 @@ public class Game implements Runnable {
         if(State.getState() != null){
             State.getState().update();
 
+
         }
+
     }
 
     private void render() {
@@ -147,6 +149,7 @@ public class Game implements Runnable {
 
 
         while (isRunning) {
+           //getMouseManager().getMouseX();
             now = System.nanoTime();
             delta += (now - lastTime) / updateTime; //Amount of time passed since the code was last called, divided by amount of time allowed
             timer += now - lastTime;

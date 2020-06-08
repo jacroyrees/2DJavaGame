@@ -1,6 +1,8 @@
 package HUD;
 
 import Entities.Creatures.Player;
+import UserIO.KeyManager;
+import UserIO.MouseManager;
 import graphics.Assets;
 import tilegame.Handler;
 
@@ -11,8 +13,9 @@ public class Inventory extends HUD {
 
     private Handler handler;
     private float x, y;
-    private int width, height;
-    Player player;
+    private boolean inventory = false;
+
+
     private BufferedImage image;
 
     public Inventory(Handler handler, float x, float y, Player player) {
@@ -22,16 +25,25 @@ public class Inventory extends HUD {
         this.handler = handler;
         this.image = Assets.Inventory.get(0);
 
+
+
+    }
+
+
+    public void onClick(){
+      if(handler.getMouseManager().isLeftPressed() && (handler.getMouseManager().getMouseX() > 780 && handler.getMouseManager().getMouseX() < 830)
+              && (handler.getMouseManager().getMouseY() > 295 && handler.getMouseManager().getMouseY() < 350)) {
+        inventory = true;
+        System.out.println("Hello");
+      }
+
     }
 
 
 
 
-
-
-
     public void update() {
-
+        onClick();
     }
 
 
@@ -40,4 +52,9 @@ public class Inventory extends HUD {
         g.drawImage(image, (int)x, (int)y, null);
 
     }
+
+
+
+
+
 }
