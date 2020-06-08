@@ -30,20 +30,35 @@ public class Inventory extends HUD {
     }
 
 
-    public void onClick(){
+    private void onOpen(){
       if(handler.getMouseManager().isLeftPressed() && (handler.getMouseManager().getMouseX() > 780 && handler.getMouseManager().getMouseX() < 830)
-              && (handler.getMouseManager().getMouseY() > 295 && handler.getMouseManager().getMouseY() < 350)) {
+              && (handler.getMouseManager().getMouseY() > 295 && handler.getMouseManager().getMouseY() < 350) && inventory == false) {
         inventory = true;
-        System.out.println("Hello");
+        System.out.println("Open");
       }
 
     }
+    private void onClose(){
+        if(handler.getMouseManager().isLeftPressed() && (handler.getMouseManager().getMouseX() > 780 && handler.getMouseManager().getMouseX() < 830)
+                && (handler.getMouseManager().getMouseY() > 295 && handler.getMouseManager().getMouseY() < 350) && inventory == true) {
+            inventory = false;
+            System.out.println("Close");
+        }
 
+    }
 
+    public void inventoryStatus(){
+        if(inventory == false){
+            onOpen();
+        }else{
+            onClose();
+        }
+    }
 
 
     public void update() {
-        onClick();
+
+        inventoryStatus();
     }
 
 
