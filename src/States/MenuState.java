@@ -13,7 +13,7 @@ public class MenuState extends State {
     }
     @Override
     public void update() {
-        if(handler.getMouseManager().isLeftPressed() && handler.getMouseManager().isRightPressed()){
+        if(handler.getMouseManager().isLeftPressed()){
             State.setState(handler.getGame().gameState);
         }
     }

@@ -1,5 +1,6 @@
 package Entities.Creatures;
 
+import Entities.Entity;
 import graphics.Animation;
 import graphics.Assets;
 import tilegame.Handler;
@@ -7,10 +8,16 @@ import tilegame.Handler;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Player extends Creature {
+public class Player extends Creature{
 
     private Animation animDown, animUp, animLeft, animRight;
     private Animation lastAnimation;
+    public static int hp;
+    private final long PERIOD = 1500L; // Adjust to suit timing
+    private long lastTime = System.currentTimeMillis() - PERIOD;
+    public static boolean damageTaken = false;
+
+
 
 
 
@@ -19,7 +26,7 @@ public class Player extends Creature {
 
     public Player(Handler handler, float x, float y, int hp) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, hp);
-
+        this.hp = hp;
         bounds.x = 8;
         bounds.y = 16;
         bounds.width = 16;
@@ -30,7 +37,10 @@ public class Player extends Creature {
         animLeft = new Animation(500, Assets.playerLeft, this);
         animRight = new Animation(500, Assets.playerRight, this);
         lastAnimation = animDown;
+        System.out.println("Hp" + hp);
     }
+
+
 
 
     @Override
@@ -39,6 +49,7 @@ public class Player extends Creature {
         animUp.update();
         animLeft.update();
         animRight.update();
+        updateHealth();
         getUserInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
@@ -68,6 +79,7 @@ public class Player extends Creature {
             xMove = speed;
 
         }
+
     }
 
     @Override
@@ -96,4 +108,36 @@ public class Player extends Creature {
         }
     }
 
+
+    public void updateHealth() {//Called every "Tick"
+        long thisTime = System.currentTimeMillis();
+
+
+        if ((thisTime - lastTime) >= PERIOD && !damageTaken) {
+
+            lastTime = thisTime;
+
+            if(hp < 10) { //If my variable is true
+                hp = hp+1;//Setting my boolean to true
+                System.out.println(hp);
+            }
+        }
+    }
+
+    //TODO :: Sort out the bug where user doesnt lose health when standing next to entity
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+

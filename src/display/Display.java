@@ -1,8 +1,6 @@
 package display;
 
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
+
 
 import javax.swing.*;
 import java.awt.*;

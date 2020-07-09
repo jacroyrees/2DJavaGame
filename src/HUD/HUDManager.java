@@ -34,6 +34,7 @@ public class HUDManager {
     public void render(Graphics g){
         for(HUD h : hud) {
             h.render(g);
+            //System.out.println(Player.hp);
         }
 
     }

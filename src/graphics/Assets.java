@@ -23,7 +23,7 @@ public class Assets {
     public static ArrayList<BufferedImage> dirtArray = new ArrayList<>();
     public static ArrayList<BufferedImage> tree = new ArrayList<>();
     public static ArrayList<BufferedImage> HUDList = new ArrayList<>();
-
+    public static ArrayList<BufferedImage> Inventory = new ArrayList<>();
 
 
     private static final int width = 32;
@@ -33,23 +33,30 @@ public class Assets {
 
     public static void init() {
         SpriteSheet HUD = new SpriteSheet(ImageLoader.loadImage("/res/textures/HUD/HealthBar.png"));
+        SpriteSheet inventory = new SpriteSheet(ImageLoader.loadImage("/res/textures/HUD/BackPack.png"));
 
-        SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/masterTileSet.png"));
-        SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/playerSpriteSheet.png"));
-        SpriteSheet dirtSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/DirtSprite.png"));
-        SpriteSheet grassSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/GrassSprite.png"));
-        SpriteSheet treeSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/treeSpriteSheet.png"));
+        SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/TileSet/masterTileSet.png"));
+        SpriteSheet playerSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/Entity/playerSpriteSheet.png"));
+        SpriteSheet dirtSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/TileSet/DirtSprite.png"));
+        SpriteSheet grassSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/TileSet/GrassSprite.png"));
+        SpriteSheet treeSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/Entity/treeSpriteSheet.png"));
 
 
         //HUDList.add(HUD.cropSheet(0,0,256,128));
-        SpriteSheet creatureSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/CreatureTest.png"));
-        creature.add(creatureSprite.cropSheet(0, 0, width, height));
+        SpriteSheet creatureSprite = new SpriteSheet(ImageLoader.loadImage("/res/textures/Entity/CreatureTest.png"));
+
+        for(int i = 0; i < 224; i += 32){
+            creature.add(creatureSprite.cropSheet(i, 0, width, height));
+
+        }
 
         for (int j = 0; j < 300; j += 30) {
 
                 HUDList.add(HUD.cropSheet(0, j, 300, 30));
+
             }
 
+            Inventory.add(inventory.cropSheet(0, 0, 64, 64));
 
 
 

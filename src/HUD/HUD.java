@@ -22,6 +22,8 @@ public abstract class HUD {
     }
 
 
+
+
     public void getPlayerVariables(){
 
     }
